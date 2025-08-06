@@ -327,9 +327,9 @@ void bsp_photodiode_dma_sampling_irq(void)
 			TIM1->DIER &= ~TIM_DIER_UIE;
 			TIM1->SR = ~TIM_SR_UIF;
 
-			TIM2->CR1 &= ~TIM_CR1_CEN;
-			TIM2->DIER &= ~TIM_DIER_UIE;
-			TIM2->SR = ~TIM_SR_UIF;
+//			TIM2->CR1 &= ~TIM_CR1_CEN;
+//			TIM2->DIER &= ~TIM_DIER_UIE;
+//			TIM2->SR = ~TIM_SR_UIF;
 
 			NVIC_ClearPendingIRQ(TIM1_UP_TIM10_IRQn);
 
@@ -412,8 +412,8 @@ void TIM2_IRQHandler(void)
 
 			// Done finish sampling event trigger
 			SST_Task_post((SST_Task *)&experiment_task_inst.super, (SST_Evt *)&finish_sampling_phase_evt);
-
 		break;
+
 		default: break;
 	}
 }
